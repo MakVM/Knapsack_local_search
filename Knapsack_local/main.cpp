@@ -9,7 +9,7 @@ using namespace std;
 //improve optimum
 //headers
 
-int scalar_multip(vector<long int> &one, vector<long int> &two)
+long int scalar_multip(vector<long int> &one, vector<long int> &two)
 {
     long int res = 0;
     for(long int i = 0; i<one.size(); i++)
@@ -43,7 +43,7 @@ bool weight_satisfied(vector<long int> &weights, vector<long int> &cur, long int
 
 vector<long int> supplem(vector<long int> &weights, vector<long int> &values, long int k, long int n, vector<long int> &init, long int &limit)
 {
-    cout<<limit<<endl;
+    //cout<<limit<<endl;
     vector<long int> cur = Hemm_neighbour(init);
 //    for(int i = 0; i<n; i++)
 //    {
