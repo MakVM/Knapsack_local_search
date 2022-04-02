@@ -20,22 +20,6 @@ int scalar_multip(vector<int> &one, vector<int> &two)
     
     return res;
 }
-
-vector<int> local_optimum(vector<int> &weights, vector<int> &values, )
-{
-    
-}
-
-bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
-{
-    if(scalar_multip(weights, cur) > k) //the weight of cur vector is > max
-    {
-        return false;
-    }
-    return true;
-}
-
-
 vector<int> Hemm_neighbour(vector<int> &cur)
 {
     int coord = rand() %cur.size();
@@ -49,6 +33,25 @@ vector<int> Hemm_neighbour(vector<int> &cur)
     }
     return cur;
 }
+
+vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init)
+{
+    vector<int> cur = Hemm_neighbour(init);
+    
+    
+}
+
+bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
+{
+    if(scalar_multip(weights, cur) > k) //the weight of cur vector is > max
+    {
+        return false;
+    }
+    return true;
+}
+
+
+
 
 int main() {
     int n; //number of items
@@ -70,11 +73,7 @@ int main() {
         
     }
     
-    vector<int> init(n,0);
-    
-    
-   
-
+    vector<int> init(n,0); //will always satisfy weight, but not values
     
     return 0;
 }
