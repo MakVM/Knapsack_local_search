@@ -9,6 +9,7 @@ using namespace std;
 //makefile
 //scalar_multip as *
 //improve optimum
+//headers
 
 int scalar_multip(vector<int> &one, vector<int> &two)
 {
@@ -90,6 +91,14 @@ int main() {
     }
     
     vector<int> init(n,0); //will always satisfy weight, but not values
+    
+    vector<int> optimal = local_optimum(weights, values, k, n, init, 0);
+    int final_val = scalar_multip(values, optimal);
+    cout<< final_val<< " "<< 0<<endl;
+    for(int i = 0; i<n; i++)
+    {
+        cout<<optimal[i]<< " ";
+    }
     
     return 0;
 }
