@@ -6,8 +6,9 @@ using namespace std;
 //IMPROVEMENTS TO BE MADE
 //makefile
 //scalar_multip as *
-//improve optimum
+//improve optimum//only local, and not global minima found...?
 //headers
+
 
 long int scalar_multip(vector<long int> &one, vector<long int> &two)
 {
