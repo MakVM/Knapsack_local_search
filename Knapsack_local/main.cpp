@@ -46,7 +46,6 @@ bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
 vector<int> supplem(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init, int &limit)
 {
     cout<<limit<<endl;
-    
     vector<int> cur = Hemm_neighbour(init);
     for(int i = 0; i<n; i++)
     {
@@ -58,26 +57,25 @@ vector<int> supplem(vector<int> &weights, vector<int> &values, int k, int n, vec
        (scalar_multip(values, cur) > scalar_multip(values, init)) ) //something to work with; it is both weight and value optimal
     {
         limit = 0;
-        local_optimum(weights, values, k, n, cur, limit);
+        return cur;
     }
     
     else //eh.. CAN GO ETERNALLY
     {
         limit++;
-        local_optimum(weights, values, k, n, init, limit);
-        break;
+        return init;
     }
 }
 vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init, int &limit)
 {
-    
+    vector<int> cur = init;
     while(limit<2*n) //can be changed...?
     {
         
-        cur = supplem(weights, values, k, n, cur, limit)
+        cur = supplem(weights, values, k, n, cur, limit);
         
     }
-    cout<<"as"<<endl;
+    
     return cur;
     
 }
