@@ -43,9 +43,16 @@ bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
     return true;
 }
 
-vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init, int limit)
+vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init, int &limit)
 {
+    cout<<limit<<endl;
+    
     vector<int> cur = Hemm_neighbour(init);
+    for(int i = 0; i<n; i++)
+    {
+        cout<<cur[i]<< " ";
+    }
+    cout<<endl;
     
     while(limit<2*n) //can be changed...?
     {
@@ -60,8 +67,12 @@ vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int 
         {
             limit++;
             local_optimum(weights, values, k, n, init, limit);
+            break;
         }
+        
+        
     }
+    cout<<"as"<<endl;
     return cur;
     
 }
@@ -89,10 +100,12 @@ int main() {
         weights.push_back(weight);
         
     }
+    cout<<"values in"<<endl;
     
     vector<int> init(n,0); //will always satisfy weight, but not values
     
-    vector<int> optimal = local_optimum(weights, values, k, n, init, 0);
+    int limit = 0;
+    vector<int> optimal = local_optimum(weights, values, k, n, init, limit);
     int final_val = scalar_multip(values, optimal);
     cout<< final_val<< " "<< 0<<endl;
     for(int i = 0; i<n; i++)
