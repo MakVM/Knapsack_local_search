@@ -103,7 +103,7 @@ int main() {
         weights.push_back(weight);
         
     }
-    cout<<"values in"<<endl;
+    //cout<<"values in"<<endl;
     
     vector<int> init(n,0); //will always satisfy weight, but not values
     
