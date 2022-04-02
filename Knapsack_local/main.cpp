@@ -45,7 +45,18 @@ bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
 vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init)
 {
     vector<int> cur = Hemm_neighbour(init);
-    if(weight_satisfied(weights, cur, k))
+    
+    if(weight_satisfied(weights, cur, k) &&
+       (scalar_multip(values, cur) > scalar_multip(values, init)) ) //something to work with; it is both weight and value optimal
+    {
+        local_optimum(weights, values, k, n, cur);
+    }
+    
+    else //eh.. CAN GO ETERNALLY
+    {
+        local_optimum(weights, values, k, n, init);
+    }
+    
     
 }
 
