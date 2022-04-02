@@ -33,14 +33,6 @@ vector<int> Hemm_neighbour(vector<int> &cur)
     }
     return cur;
 }
-
-vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init)
-{
-    vector<int> cur = Hemm_neighbour(init);
-    
-    
-}
-
 bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
 {
     if(scalar_multip(weights, cur) > k) //the weight of cur vector is > max
@@ -49,6 +41,14 @@ bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
     }
     return true;
 }
+
+vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init)
+{
+    vector<int> cur = Hemm_neighbour(init);
+    if(weight_satisfied(weights, cur, k))
+    
+}
+
 
 
 
