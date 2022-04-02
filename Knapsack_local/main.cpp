@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include <vector>
 #include <random>
@@ -11,19 +9,19 @@ using namespace std;
 //improve optimum
 //headers
 
-int scalar_multip(vector<int> &one, vector<int> &two)
+int scalar_multip(vector<long int> &one, vector<long int> &two)
 {
-    int res = 0;
-    for(int i = 0; i<one.size(); i++)
+    long int res = 0;
+    for(long int i = 0; i<one.size(); i++)
     {
         res += one[i]*two[i];
     }
     
     return res;
 }
-vector<int> Hemm_neighbour(vector<int> &cur)
+vector<long int> Hemm_neighbour(vector<long int> &cur)
 {
-    int coord = rand() %cur.size();
+    long int coord = rand() %cur.size();
     if(cur[coord]) //if it's a 1
     {
         cur[coord] = 0;
@@ -34,7 +32,7 @@ vector<int> Hemm_neighbour(vector<int> &cur)
     }
     return cur;
 }
-bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
+bool weight_satisfied(vector<long int> &weights, vector<long int> &cur, long int k)
 {
     if(scalar_multip(weights, cur) > k) //the weight of cur vector is > max
     {
@@ -43,10 +41,10 @@ bool weight_satisfied(vector<int> &weights, vector<int> &cur, int k)
     return true;
 }
 
-vector<int> supplem(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init, int &limit)
+vector<long int> supplem(vector<long int> &weights, vector<long int> &values, long int k, long int n, vector<long int> &init, long int &limit)
 {
-//    cout<<limit<<endl;
-    vector<int> cur = Hemm_neighbour(init);
+    cout<<limit<<endl;
+    vector<long int> cur = Hemm_neighbour(init);
 //    for(int i = 0; i<n; i++)
 //    {
 //        cout<<cur[i]<< " ";
@@ -66,9 +64,9 @@ vector<int> supplem(vector<int> &weights, vector<int> &values, int k, int n, vec
         return init;
     }
 }
-vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int n, vector<int> &init, int &limit)
+vector<long int> local_optimum(vector<long int> &weights, vector<long int> &values, long int k, long int n, vector<long int> &init, long int &limit)
 {
-    vector<int> cur = init;
+    vector<long int> cur = init;
     while(limit<2*n) //can be changed...?
     {
         
@@ -81,21 +79,18 @@ vector<int> local_optimum(vector<int> &weights, vector<int> &values, int k, int 
 }
 
 
-
-
-
 int main() {
-    int n; //number of items
-    int k; //maxweight
+    long int n; //number of items
+    long int k; //maxweight
     
-    int value, weight;
+    long int value, weight;
     cin>> n;
     cin>> k;
     
-    vector<int> values;
-    vector<int> weights;
+    vector<long int> values;
+    vector<long int> weights;
     
-    for(int i = 0; i<n; i++)
+    for(long int i = 0; i<n; i++)
     {
         cin>>value;
         values.push_back(value);
@@ -105,13 +100,13 @@ int main() {
     }
     //cout<<"values in"<<endl;
     
-    vector<int> init(n,0); //will always satisfy weight, but not values
+    vector<long int> init(n,0); //will always satisfy weight, but not values
     
-    int limit = 0;
-    vector<int> optimal = local_optimum(weights, values, k, n, init, limit);
-    int final_val = scalar_multip(values, optimal);
+    long int limit = 0;
+    vector<long int> optimal = local_optimum(weights, values, k, n, init, limit);
+    long int final_val = scalar_multip(values, optimal);
     cout<< final_val<< " "<< 0<<endl;
-    for(int i = 0; i<n; i++)
+    for(long int i = 0; i<n; i++)
     {
         cout<<optimal[i]<< " ";
     }
